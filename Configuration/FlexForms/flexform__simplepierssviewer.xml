@@ -1,0 +1,36 @@
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Function</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<!-- FeedUrl -->
+					<settings.feedUrl>
+						<TCEforms>
+							<label>FeedUrl</label>
+							<config>
+								<type>input</type>
+								<size>35</size>
+							</config>
+						</TCEforms>
+					</settings.feedUrl>
+					<settings.itemLimit>
+						<TCEforms>
+							<label>Item Limit</label>
+							<config>
+								<type>input</type>
+								<size>5</size>
+							</config>
+						</TCEforms>
+					</settings.itemLimit>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

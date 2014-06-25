@@ -1,0 +1,19 @@
+.tx-simplepie-rss{
+	margin-top: 1.5em;
+	margin-bottom: 20px;
+	line-height: 20px;
+	font-size: 13px;
+}
+
+.tx_simplepierss-item{
+	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAeCAMAAABpA6zvAAAAM1BMVEXj4+Po6Ojo6Ojo6Ojo6Oja2tro6Ojo6Ojo6Ojo6Ojc3Nzo6Ojo6Ojf398AAADa2tro6OhCkPtTAAAAD3RSTlOzcFAwQO6PIGCg2xCAxwCl192nAAAA20lEQVR42tWSwRKEIAxDqwioYOr/f+2OHQU35bDXza2Zp7RpBThJMB3k/gm4D0Hx4DEEqwe3H0G2dpgWBp11wJQ9WIYg1IGIzvH5RAFPU29w+n5HwL3PeKm56QHXZmWreaL1AdPjqJX+c+EZNyt5oIgbnKhFbjzdYNbRy6WfS4CQU4fcAQNDT1xLn7hz53KBJQ3SRqn6vVXZ1F8OkN6u5guMbyfARFe/2sVXcijplqwUZc4UiYO0A9d1uLyEB7x/uQfAb09nNBDzZVSQgl7P9ljtcLUWOE3nltH1AWnPRJnybiu7AAAAAElFTkSuQmCC') scroll 0 0 no-repeat transparent;
+	padding-left: 50px;
+
+}
+
+.tx_simplepierss-item span{
+	color: #ff4646;
+}
+.tx_simplepierss-item img {
+	display: none;
+}

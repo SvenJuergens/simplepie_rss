@@ -1,0 +1,14 @@
+{namespace sj=Tx_Sjviewhelpers_ViewHelpers}
+<sj:asset.includeFile path="typo3conf/ext/simplepie_rss/Resources/Public/Css/tx_simplpierss.css" />
+<f:layout name="Default" />
+
+<f:section name="main">
+	<div class="tx_simplepierss-title">
+			<f:for each="{simplePies}" as="item">
+				<div class="tx_simplepierss-item">
+					<span>{item.date}</span>
+					<div> <f:link.external uri="{item.link}" target="_blank" title=""><f:format.raw>{item.title}</f:format.raw></f:link.external></div>
+				</div>
+		</f:for>
+	</div>
+</f:section>

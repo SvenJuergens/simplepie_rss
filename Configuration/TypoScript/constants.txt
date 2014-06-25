@@ -1,0 +1,14 @@
+plugin.tx_simplepierss {
+	view {
+		# cat=plugin.tx_simplepierss/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:simplepie_rss/Resources/Private/Templates/
+		# cat=plugin.tx_simplepierss/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:simplepie_rss/Resources/Private/Partials/
+		# cat=plugin.tx_simplepierss/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:simplepie_rss/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_simplepierss//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}
