@@ -7,7 +7,9 @@
 			<trans-unit id="tx_simplepierss_domain_model_simplepie">
 				<source>SimplePie</source>
 			</trans-unit>
-			
+			<trans-unit id="noPiesFound" xml:space="preserve">
+				<source>Keine Items gefunden</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
