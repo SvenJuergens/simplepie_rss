@@ -1,4 +1,4 @@
-{namespace sj=Tx_Sjviewhelpers_ViewHelpers}
+{namespace sj=SvenJuergens\SjViewhelpers\ViewHelpers}
 <sj:asset.includeFile path="typo3conf/ext/simplepie_rss/Resources/Public/Css/tx_simplpierss.css" />
 <f:layout name="Default" />
 <f:section name="main">
@@ -11,7 +11,7 @@
 					<div> <f:link.external uri="{item.link}" target="_blank" title=""><f:format.raw>{item.title}</f:format.raw></f:link.external></div>
 				</div>
 		</f:for>
-	</div>  
+	</div>
 	</f:then>
 	<f:else>
 		<f:translate key="noPiesFound" default="keene Items jefunden"/>
