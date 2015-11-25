@@ -1,20 +1,17 @@
 <?php
-if (!defined('TYPO3_MODE')) {
-	die ('Access denied.');
-}
+
+defined('TYPO3_MODE') or die();
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'TYPO3.' . $_EXTKEY,
-	'Simplepierssviewer',
-	array(
-		'SimplePie' => 'list',
-		
-	),
-	// non-cacheable actions
-	array(
-		'SimplePie' => '',
-		
-	)
-);
+    'TYPO3.' . $_EXTKEY,
+    'Simplepierssviewer',
+    array(
+        'SimplePie' => 'list',
 
-?>
+    ),
+    // non-cacheable actions
+    array(
+        'SimplePie' => '',
+
+    )
+);
