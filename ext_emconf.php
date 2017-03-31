@@ -10,7 +10,7 @@
  * "version" and "dependencies" must not be touched!
  ***************************************************************/
 
-$EM_CONF[$_EXTKEY] = array(
+$EM_CONF[$_EXTKEY] = [
     'title' => 'SimplePie RSS',
     'description' => 'Show an RSS Feed with SimplePie',
     'category' => 'plugin',
@@ -28,15 +28,12 @@ $EM_CONF[$_EXTKEY] = array(
     'clearCacheOnLoad' => 0,
     'lockType' => '',
     'version' => '1.1.0',
-    'constraints' => array(
-        'depends' => array(
-            'extbase' => '6.0',
-            'fluid' => '6.0',
-            'typo3' => '6.0',
-        ),
-        'conflicts' => array(
-        ),
-        'suggests' => array(
-        ),
-    ),
-);
+    'constraints' => [
+        'depends' => [
+        ],
+        'conflicts' => [
+        ],
+        'suggests' => [
+        ],
+    ],
+];

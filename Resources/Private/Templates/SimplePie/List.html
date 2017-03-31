@@ -1,5 +1,9 @@
-{namespace sj=SvenJuergens\SjViewhelpers\ViewHelpers}
+<html data-namespace-typo3-fluid="true"
+	  xmlns:f="http://xsd.helmut-hummel.de/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:sj="http://typo3.org/ns/SvenJuergens/SjViewhelpers/ViewHelpers"
+>
 <sj:asset.includeFile path="typo3conf/ext/simplepie_rss/Resources/Public/Css/tx_simplpierss.css" />
+
 <f:layout name="Default" />
 <f:section name="main">
 <f:if condition="{simplePies}">
@@ -7,8 +11,10 @@
       	<div class="tx_simplepierss-title">
 			<f:for each="{simplePies}" as="item">
 				<div class="tx_simplepierss-item">
-					<span>{item.date}</span>
-					<div> <f:link.external uri="{item.link}" target="_blank" title=""><f:format.raw>{item.title}</f:format.raw></f:link.external></div>
+					<f:if condition="{item.date}">
+						<span>{item.date}</span>
+					</f:if>
+					<div><f:link.external uri="{item.link}" target="_blank"><f:format.raw>{item.title}</f:format.raw></f:link.external></div>
 				</div>
 		</f:for>
 	</div>
@@ -17,5 +23,4 @@
 		<f:translate key="noPiesFound" default="keene Items jefunden"/>
 	</f:else>
 </f:if>
-
 </f:section>

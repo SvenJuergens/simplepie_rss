@@ -1,6 +1,6 @@
 <?php
 
-namespace TYPO3\SimplepieRss\Controller;
+namespace SvenJuergens\SimplepieRss\Controller;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -15,19 +15,12 @@ namespace TYPO3\SimplepieRss\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
-
-class SimplePieController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class SimplePieController extends ActionController
 {
-    /**
-     * simplePieRepository
-     *
-     * @var \TYPO3\SimplepieRss\Domain\Repository\SimplePieRepository
-     * @inject
-     */
-    protected $simplePieRepository;
 
     protected function initializeAction()
     {
@@ -43,7 +36,8 @@ class SimplePieController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
      */
     public function listAction()
     {
-        require_once ExtensionManagementUtility::extPath('simplepie_rss', 'Resources/Php/SimplePie-1.3.1/autoloader.php');
+        //require_once ExtensionManagementUtility::extPath('simplepie_rss', 'Resources/Php/SimplePie-1.3.1/autoloader.php');
+        require_once ExtensionManagementUtility::extPath('simplepie_rss', 'Resources/Private/Libraries/simplepie-1.4.3/autoloader.php');
 
         $feed = new \SimplePie();
         $feed->enable_cache(true);
@@ -56,7 +50,8 @@ class SimplePieController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
         // Run SimplePie.
         $feed->init();
 
-        // This makes sure that the content is sent to the browser as text/html and the UTF-8 character set (since we didn't change it).
+        // This makes sure that the content is sent to the browser as
+        // text/html and the UTF-8 character set (since we didn't change it).
         $feed->handle_content_type();
 
         // if ($feed->error())
@@ -66,12 +61,12 @@ class SimplePieController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 
         //setlocale (LC_TIME, 'de_DE');
         foreach ($feed->get_items(0, $this->settings['itemLimit']) as $item) {
-            $markerArray = array(
+            $markerArray = [
                 'date' => $item->get_local_date('%d.%m.%Y'),
                 'title' => $this->cleanContent(html_entity_decode($item->get_title())) ,
                 'text' => $this->cleanContent($item->get_content()),
                 'link' => $item->get_permalink()
-            );
+            ];
             $items[] = $markerArray;
         }
 
@@ -87,27 +82,25 @@ class SimplePieController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     {
         //unicode Symbole wie '&#xfc;' ersetzen
         // html_entity_decode holft da nicht
-            $replace = array(
-                '&Uuml;'  => 'Ü',
-                '&#xDC;'  => 'Ü',
-                '&uuml;' =>  'ü',
-                '&#xfc;' =>  'ü',
-                '&Auml;'  => 'Ä',
-                '&#xC4;'  => 'Ä',
-                '&auml;'  => 'ä',
-                '&#xE4;'  => 'ä',
-                '&Ouml;' =>  'Ö',
-                '&#xD6;' =>  'Ö',
-                '&ouml;' =>  'ö',
-                '&#xF6;' =>  'ö',
-                '&szlig' => 'ß',
-                '&#xDF;' => 'ß',
-                '&#xdf;' => 'ß',
-                '&#x2014;' => '—'
+        $replace = [
+            '&Uuml;' => 'Ü',
+            '&#xDC;' => 'Ü',
+            '&uuml;' => 'ü',
+            '&#xfc;' => 'ü',
+            '&Auml;' => 'Ä',
+            '&#xC4;' => 'Ä',
+            '&auml;' => 'ä',
+            '&#xE4;' => 'ä',
+            '&Ouml;' => 'Ö',
+            '&#xD6;' => 'Ö',
+            '&ouml;' => 'ö',
+            '&#xF6;' => 'ö',
+            '&szlig' => 'ß',
+            '&#xDF;' => 'ß',
+            '&#xdf;' => 'ß',
+            '&#x2014;' => '—'
 
-            );
-        $text = strtr($text, $replace);
-
+        ];
         return strtr($string, $replace);
     }
 }
