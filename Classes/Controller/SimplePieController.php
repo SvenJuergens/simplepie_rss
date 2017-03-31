@@ -36,7 +36,6 @@ class SimplePieController extends ActionController
      */
     public function listAction()
     {
-        //require_once ExtensionManagementUtility::extPath('simplepie_rss', 'Resources/Php/SimplePie-1.3.1/autoloader.php');
         require_once ExtensionManagementUtility::extPath('simplepie_rss', 'Resources/Private/Libraries/simplepie-1.4.3/autoloader.php');
 
         $feed = new \SimplePie();
@@ -54,12 +53,6 @@ class SimplePieController extends ActionController
         // text/html and the UTF-8 character set (since we didn't change it).
         $feed->handle_content_type();
 
-        // if ($feed->error())
-        // {
-        //  echo $feed->error();
-        // }
-
-        //setlocale (LC_TIME, 'de_DE');
         foreach ($feed->get_items(0, $this->settings['itemLimit']) as $item) {
             $markerArray = [
                 'date' => $item->get_local_date('%d.%m.%Y'),
