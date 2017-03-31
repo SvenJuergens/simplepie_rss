@@ -1,15 +1,11 @@
 plugin.tx_simplepierss {
 	view {
-		templateRootPath = {$plugin.tx_simplepierss.view.templateRootPath}
-		partialRootPath = {$plugin.tx_simplepierss.view.partialRootPath}
-		layoutRootPath = {$plugin.tx_simplepierss.view.layoutRootPath}
+		templateRootPaths.0 = {$plugin.tx_simplepierss.view.templateRootPath}
+		partialRootPaths.0 = {$plugin.tx_simplepierss.view.partialRootPath}
+		layoutRootPaths.0 = {$plugin.tx_simplepierss.view.layoutRootPath}
 	}
 	persistence {
 		storagePid = {$plugin.tx_simplepierss.persistence.storagePid}
-	}
-	features {
-		# uncomment the following line to enable the new Property Mapper.
-		# rewrittenPropertyMapper = 1
 	}
 }
 
