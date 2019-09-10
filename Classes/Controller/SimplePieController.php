@@ -15,6 +15,7 @@ namespace SvenJuergens\SimplepieRss\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -68,7 +69,8 @@ class SimplePieController extends ActionController
 
     private function getCacheFolder()
     {
-        return PATH_site . 'typo3temp' . DIRECTORY_SEPARATOR . 'tx_simplepierss' . DIRECTORY_SEPARATOR;
+        $pathSite = Environment::getPublicPath() . '/';
+        return  $pathSite . 'typo3temp' . DIRECTORY_SEPARATOR . 'tx_simplepierss' . DIRECTORY_SEPARATOR;
     }
 
     public function cleanContent($string)
