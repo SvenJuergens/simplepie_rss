@@ -20,14 +20,14 @@ $EM_CONF[$_EXTKEY] = [
     'shy' => '',
     'priority' => '',
     'module' => '',
-    'state' => 'alpha',
+    'state' => 'beta',
     'internal' => '',
     'uploadfolder' => '0',
     'createDirs' => '',
     'modify_tables' => '',
     'clearCacheOnLoad' => 0,
     'lockType' => '',
-    'version' => '1.2.0',
+    'version' => '1.3.0',
     'constraints' => [
         'depends' => [
         ],

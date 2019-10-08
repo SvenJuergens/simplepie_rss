@@ -16,7 +16,6 @@ namespace SvenJuergens\SimplepieRss\Controller;
  */
 
 use TYPO3\CMS\Core\Core\Environment;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
@@ -37,8 +36,6 @@ class SimplePieController extends ActionController
      */
     public function listAction()
     {
-        require_once ExtensionManagementUtility::extPath('simplepie_rss', 'Resources/Private/Libraries/simplepie-1.4.3/autoloader.php');
-
         $feed = new \SimplePie();
         $feed->enable_cache(true);
         $feed->set_cache_duration(3600);
