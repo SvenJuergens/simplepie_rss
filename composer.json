@@ -1,0 +1,20 @@
+{
+	"name": "svenjuergens/simplepie-rss",
+	"type": "typo3-cms-extension",
+	"description": "An example extension",
+	"license": "GPL-2.0-or-later",
+	"require": {
+		"typo3/cms-core": "^10.4 || ^11.0",
+		"simplepie/simplepie": "^1.5"
+	},
+	"autoload": {
+		"psr-4": {
+			"SvenJuergens\\SimplepieRss\\": "Classes/"
+		}
+	},
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "simplepie_rss"
+		}
+	}
+}
