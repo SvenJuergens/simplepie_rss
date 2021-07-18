@@ -3,15 +3,14 @@
 defined('TYPO3_MODE') or die();
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'SvenJuergens.simplepie_rss',
+    'simplepie_rss',
     'Simplepierssviewer',
     [
-        'SimplePie' => 'list',
+        \SvenJuergens\SimplepieRss\Controller\SimplePieController::class => 'list',
 
     ],
     // non-cacheable actions
     [
-        'SimplePie' => '',
-
+        \SvenJuergens\SimplepieRss\Controller\SimplePieController::class => '',
     ]
 );

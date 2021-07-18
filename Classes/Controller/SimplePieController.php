@@ -15,6 +15,7 @@ namespace SvenJuergens\SimplepieRss\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
+use SimplePie;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -36,7 +37,7 @@ class SimplePieController extends ActionController
      */
     public function listAction()
     {
-        $feed = new \SimplePie();
+        $feed = new SimplePie();
         $feed->enable_cache(true);
         $feed->set_cache_duration(3600);
         $feed->set_cache_location($this->getCacheFolder());
