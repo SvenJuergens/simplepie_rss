@@ -29,6 +29,21 @@
 							</config>
 						</TCEforms>
 					</settings.itemLimit>
+					<settings.templateLayout>
+						<TCEforms>
+							<label>Template Layout</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</settings.templateLayout>
 				</el>
 			</ROOT>
 		</sDEF>
