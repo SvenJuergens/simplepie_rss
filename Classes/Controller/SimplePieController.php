@@ -51,7 +51,7 @@ class SimplePieController extends ActionController
         // This makes sure that the content is sent to the browser as
         // text/html and the UTF-8 character set (since we didn't change it).
         $feed->handle_content_type();
-
+        $items = [];
         foreach ($feed->get_items(0, $this->settings['itemLimit']) as $item) {
             $markerArray = [
                 'date' => $item->get_local_date('%d.%m.%Y'),
@@ -65,13 +65,13 @@ class SimplePieController extends ActionController
         $this->view->assign('simplePies', $items);
     }
 
-    private function getCacheFolder()
+    private function getCacheFolder(): string
     {
         $pathSite = Environment::getPublicPath() . '/';
         return  $pathSite . 'typo3temp' . DIRECTORY_SEPARATOR . 'tx_simplepierss' . DIRECTORY_SEPARATOR;
     }
 
-    public function cleanContent($string)
+    public function cleanContent($string): string
     {
         //unicode Symbole wie '&#xfc;' ersetzen
         // html_entity_decode holft da nicht
