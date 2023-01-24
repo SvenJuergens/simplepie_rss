@@ -52,7 +52,7 @@ class SimplePieController extends ActionController
         // text/html and the UTF-8 character set (since we didn't change it).
         $feed->handle_content_type();
         $items = [];
-        foreach ($feed->get_items(0, $this->settings['itemLimit']) as $item) {
+        foreach ($feed->get_items(0, (int)($this->settings['itemLimit']?? 0 )) as $item) {
             $markerArray = [
                 'date' => $item->get_local_date('%d.%m.%Y'),
                 'title' => $this->cleanContent(html_entity_decode($item->get_title())) ,
