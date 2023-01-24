@@ -14,7 +14,37 @@
 	},
 	"extra": {
 		"typo3/cms": {
+			"app-dir": ".Build",
+			"web-dir": ".Build/public",
 			"extension-key": "simplepie_rss"
 		}
+	},
+	"config": {
+		"vendor-dir": ".Build/vendor",
+		"vendor_dir": ".Build/vendor",
+		"sort-packages": true,
+		"allow-plugins": {
+			"typo3/cms-composer-installers": true,
+			"typo3/class-alias-loader": true
+		}
+	},
+	"scripts": {
+		"test:php:lint": [
+			"parallel-lint --exclude .Build ."
+		],
+		"test": [
+			"@test:php:lint"
+		],
+		"cgl": [
+			"php-cs-fixer fix --config=.php-cs-fixer.php --diff --dry-run --verbose"
+		],
+		"cglFix": [
+			"php-cs-fixer fix --config=.php-cs-fixer.php"
+		]
+	},
+	"require-dev": {
+		"friendsofphp/php-cs-fixer": "^3",
+		"php-parallel-lint/php-console-highlighter": "^0.5.0",
+		"php-parallel-lint/php-parallel-lint": "^1.2"
 	}
 }

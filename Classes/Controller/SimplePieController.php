@@ -22,7 +22,6 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class SimplePieController extends ActionController
 {
-
     protected function initializeAction()
     {
         if (!is_dir($this->getCacheFolder())) {
@@ -32,8 +31,6 @@ class SimplePieController extends ActionController
 
     /**
      * action list
-     *
-     * @return void
      */
     public function listAction()
     {
@@ -52,7 +49,7 @@ class SimplePieController extends ActionController
         // text/html and the UTF-8 character set (since we didn't change it).
         $feed->handle_content_type();
         $items = [];
-        foreach ($feed->get_items(0, (int)($this->settings['itemLimit']?? 0 )) as $item) {
+        foreach ($feed->get_items(0, (int)($this->settings['itemLimit']?? 0)) as $item) {
             $markerArray = [
                 'date' => $item->get_local_date('%d.%m.%Y'),
                 'title' => $this->cleanContent(html_entity_decode($item->get_title())) ,
