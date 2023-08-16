@@ -4,8 +4,8 @@
 	"description": "An example extension",
 	"license": "GPL-2.0-or-later",
 	"require": {
-		"typo3/cms-core": "^10.4.32 || ^11.5.16",
-		"simplepie/simplepie": "^1.5"
+		"typo3/cms-core": "^11.5.16 || ^12.4",
+		"simplepie/simplepie": "^1.7"
 	},
 	"autoload": {
 		"psr-4": {
