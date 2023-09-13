@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SvenJuergens\SimplepieRss\Controller;
@@ -55,7 +56,7 @@ class SimplePieController extends ActionController
                 'date' => $item->get_local_date('%d.%m.%Y'),
                 'title' => $this->cleanContent(html_entity_decode((string)$item->get_title())) ,
                 'text' => $this->cleanContent((string)$item->get_content()),
-                'link' => $item->get_permalink()
+                'link' => $item->get_permalink(),
             ];
             $items[] = $markerArray;
         }
@@ -93,7 +94,7 @@ class SimplePieController extends ActionController
             '&szlig' => 'ß',
             '&#xDF;' => 'ß',
             '&#xdf;' => 'ß',
-            '&#x2014;' => '—'
+            '&#x2014;' => '—',
 
         ];
         return strtr($string, $replace);
