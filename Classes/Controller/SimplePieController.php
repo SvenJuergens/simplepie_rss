@@ -15,6 +15,7 @@ namespace SvenJuergens\SimplepieRss\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
+use Psr\Http\Message\ResponseInterface;
 use SimplePie;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -32,7 +33,7 @@ class SimplePieController extends ActionController
     /**
      * action list
      */
-    public function listAction()
+    public function listAction(): ResponseInterface
     {
         $feed = new SimplePie();
         $feed->enable_cache(true);
@@ -49,17 +50,18 @@ class SimplePieController extends ActionController
         // text/html and the UTF-8 character set (since we didn't change it).
         $feed->handle_content_type();
         $items = [];
-        foreach ($feed->get_items(0, (int)($this->settings['itemLimit']?? 0)) as $item) {
+        foreach ($feed->get_items(0, (int)($this->settings['itemLimit'] ?? 0)) as $item) {
             $markerArray = [
                 'date' => $item->get_local_date('%d.%m.%Y'),
                 'title' => $this->cleanContent(html_entity_decode($item->get_title())) ,
                 'text' => $this->cleanContent($item->get_content()),
-                'link' => $item->get_permalink()
+                'link' => $item->get_permalink(),
             ];
             $items[] = $markerArray;
         }
 
         $this->view->assign('simplePies', $items);
+        return $this->htmlResponse();
     }
 
     private function getCacheFolder(): string
@@ -88,7 +90,7 @@ class SimplePieController extends ActionController
             '&szlig' => 'ß',
             '&#xDF;' => 'ß',
             '&#xdf;' => 'ß',
-            '&#x2014;' => '—'
+            '&#x2014;' => '—',
 
         ];
         return strtr($string, $replace);
