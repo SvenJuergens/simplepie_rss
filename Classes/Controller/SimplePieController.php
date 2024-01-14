@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SvenJuergens\SimplepieRss\Controller;
 
 /*
@@ -14,7 +16,6 @@ namespace SvenJuergens\SimplepieRss\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
-
 use Psr\Http\Message\ResponseInterface;
 use SimplePie;
 use TYPO3\CMS\Core\Core\Environment;
@@ -23,7 +24,7 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class SimplePieController extends ActionController
 {
-    protected function initializeAction()
+    protected function initializeAction(): void
     {
         if (!is_dir($this->getCacheFolder())) {
             GeneralUtility::mkdir($this->getCacheFolder());
@@ -35,7 +36,7 @@ class SimplePieController extends ActionController
      */
     public function listAction(): ResponseInterface
     {
-        $feed = new SimplePie();
+        $feed = new SimplePie\SimplePie();
         $feed->enable_cache(true);
         $feed->set_cache_duration(3600);
         $feed->set_cache_location($this->getCacheFolder());
@@ -53,8 +54,8 @@ class SimplePieController extends ActionController
         foreach ($feed->get_items(0, (int)($this->settings['itemLimit'] ?? 0)) as $item) {
             $markerArray = [
                 'date' => $item->get_local_date('%d.%m.%Y'),
-                'title' => $this->cleanContent(html_entity_decode($item->get_title())) ,
-                'text' => $this->cleanContent($item->get_content()),
+                'title' => $this->cleanContent(html_entity_decode((string)$item->get_title())) ,
+                'text' => $this->cleanContent((string)$item->get_content()),
                 'link' => $item->get_permalink(),
             ];
             $items[] = $markerArray;
@@ -70,8 +71,11 @@ class SimplePieController extends ActionController
         return  $pathSite . 'typo3temp' . DIRECTORY_SEPARATOR . 'tx_simplepierss' . DIRECTORY_SEPARATOR;
     }
 
-    public function cleanContent($string): string
+    public function cleanContent(string $string = ''): string
     {
+        if (empty($string)) {
+            return $string;
+        }
         //unicode Symbole wie '&#xfc;' ersetzen
         // html_entity_decode holft da nicht
         $replace = [
