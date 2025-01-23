@@ -1,0 +1,15 @@
+mod.wizards.newContentElement.wizardItems.ext-simplepie-rss {
+    header = Simplepie-Rss
+    after = common
+    elements {
+        news_list {
+            iconIdentifier = tx-simplepie-rss
+            title = Simplepie-Rss
+            description = Simplepie-rss TYPO3 integration
+            tt_content_defValues {
+                CType = simplepierss_simplepierssviewer
+            }
+        }
+    }
+    show = *
+}
