@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace SvenJuergens\SimplepieRss\Updates;
 
+use Linawolf\ListTypeMigration\Upgrades\AbstractListTypeToCTypeUpdate;
 use TYPO3\CMS\Install\Attribute\UpgradeWizard;
-use TYPO3\CMS\Install\Updates\AbstractListTypeToCTypeUpdate;
 
 #[UpgradeWizard('svenjuergensSimplepieRssCTypeMigration')]
 final class SvenJuergensSimplepieRssCTypeMigration extends AbstractListTypeToCTypeUpdate
@@ -35,7 +35,7 @@ final class SvenJuergensSimplepieRssCTypeMigration extends AbstractListTypeToCTy
     protected function getListTypeToCTypeMapping(): array
     {
         return [
-            'simplepierss_simplepierssviewer' => 'simplepierss_simplepierssviewer'
+            'simplepierss_simplepierssviewer' => 'simplepierss_simplepierssviewer',
         ];
     }
 }

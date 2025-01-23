@@ -5,7 +5,8 @@
 	"license": "GPL-2.0-or-later",
 	"require": {
 		"typo3/cms-core": "^12.4.22 || ^13.4",
-		"simplepie/simplepie": "^1.7"
+		"simplepie/simplepie": "^1.7",
+		"linawolf/list-type-migration": "^1"
 	},
 	"autoload": {
 		"psr-4": {
