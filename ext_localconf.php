@@ -12,5 +12,6 @@ defined('TYPO3') or die();
     // non-cacheable actions
     [
         \SvenJuergens\SimplepieRss\Controller\SimplePieController::class => '',
-    ]
+    ],
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 );

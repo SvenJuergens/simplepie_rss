@@ -9,13 +9,12 @@ defined('TYPO3') or die();
 );
 
 $pluginSignature = str_replace('_', '', 'simplepie_rss') . '_simplepierssviewer';
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist'][$pluginSignature] =
-    'layout, select_key, pages, recursive';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tt_content', '--div--;Configuration,pi_flexform,', $pluginSignature, 'after:subheader');
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
-    $pluginSignature,
-    'FILE:EXT:simplepie_rss/Configuration/FlexForms/flexform__simplepierssviewer.xml'
+    '*',
+    'FILE:EXT:simplepie_rss/Configuration/FlexForms/flexform__simplepierssviewer.xml',
+    $pluginSignature
 );
 
 /***************
