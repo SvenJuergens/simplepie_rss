@@ -1,48 +1,37 @@
 <T3DataStructure>
-	<meta>
-		<langDisable>1</langDisable>
-	</meta>
 	<sheets>
 		<sDEF>
 			<ROOT>
-				<TCEforms>
-					<sheetTitle>Function</sheetTitle>
-				</TCEforms>
+				<sheetTitle>Function</sheetTitle>
 				<type>array</type>
 				<el>
 					<!-- FeedUrl -->
 					<settings.feedUrl>
-						<TCEforms>
-							<label>FeedUrl</label>
-							<config>
-								<type>input</type>
-								<size>35</size>
-							</config>
-						</TCEforms>
+                        <label>FeedUrl</label>
+                        <config>
+                            <type>input</type>
+                            <size>35</size>
+                        </config>
 					</settings.feedUrl>
 					<settings.itemLimit>
-						<TCEforms>
-							<label>Item Limit</label>
-							<config>
-								<type>input</type>
-								<size>5</size>
-							</config>
-						</TCEforms>
+                        <label>Item Limit</label>
+                        <config>
+                            <type>input</type>
+                            <size>5</size>
+                        </config>
 					</settings.itemLimit>
 					<settings.templateLayout>
-						<TCEforms>
-							<label>Template Layout</label>
-							<config>
-								<type>select</type>
-								<renderType>selectSingle</renderType>
-								<items>
-									<numIndex index="0" type="array">
-										<numIndex index="0"></numIndex>
-										<numIndex index="1"></numIndex>
-									</numIndex>
-								</items>
-							</config>
-						</TCEforms>
+                        <label>Template Layout</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items>
+                                <numIndex index="0" type="array">
+                                    <numIndex index="0"></numIndex>
+                                    <numIndex index="1"></numIndex>
+                                </numIndex>
+                            </items>
+                        </config>
 					</settings.templateLayout>
 				</el>
 			</ROOT>

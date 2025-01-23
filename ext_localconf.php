@@ -1,5 +1,7 @@
 <?php
 
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+
 defined('TYPO3') or die();
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -12,5 +14,8 @@ defined('TYPO3') or die();
     // non-cacheable actions
     [
         \SvenJuergens\SimplepieRss\Controller\SimplePieController::class => '',
-    ]
+    ],
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 );
+
+ExtensionManagementUtility::addPageTSConfig('@import \'EXT:simplepie_rss/Configuration/TSconfig/ContentElementWizard.tsconfig\'');
