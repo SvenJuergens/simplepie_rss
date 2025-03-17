@@ -17,5 +17,3 @@ defined('TYPO3') or die();
     ],
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 );
-
-ExtensionManagementUtility::addPageTSConfig('@import \'EXT:simplepie_rss/Configuration/TSconfig/ContentElementWizard.tsconfig\'');
