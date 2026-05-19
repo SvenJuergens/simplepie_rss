@@ -16,68 +16,48 @@ namespace SvenJuergens\SimplepieRss\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
 use Psr\Http\Message\ResponseInterface;
-use SimplePie;
-use TYPO3\CMS\Core\Core\Environment;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use SvenJuergens\SimplepieRss\Service\SimplePieFactory;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class SimplePieController extends ActionController
 {
-    protected function initializeAction(): void
-    {
-        if (!is_dir($this->getCacheFolder())) {
-            GeneralUtility::mkdir($this->getCacheFolder());
-        }
-    }
+    public function __construct(
+        private readonly SimplePieFactory $simplePieFactory,
+    ) {}
 
-    /**
-     * action list
-     */
     public function listAction(): ResponseInterface
     {
-        $feed = new SimplePie\SimplePie();
-        $feed->enable_cache(true);
-        $feed->set_cache_duration(3600);
-        $feed->set_cache_location($this->getCacheFolder());
-        // Set which feed to process.
-        $feed->set_feed_url($this->settings['feedUrl']);
-        $feed->enable_order_by_date(false);
+        $feedUrl = (string)($this->settings['feedUrl'] ?? '');
+        if ($feedUrl === '') {
+            $this->view->assign('simplePies', []);
+            return $this->htmlResponse();
+        }
 
-        // Run SimplePie.
+        $cacheLifetime = (int)($this->settings['cacheLifetime'] ?? SimplePieFactory::DEFAULT_CACHE_LIFETIME);
+        $feed = $this->simplePieFactory->create($feedUrl, $cacheLifetime);
         $feed->init();
 
-        // This makes sure that the content is sent to the browser as
-        // text/html and the UTF-8 character set (since we didn't change it).
-        $feed->handle_content_type();
         $items = [];
         foreach ($feed->get_items(0, (int)($this->settings['itemLimit'] ?? 0)) as $item) {
-            $markerArray = [
+            $items[] = [
                 'date' => $item->get_local_date('%d.%m.%Y'),
-                'title' => $this->cleanContent(html_entity_decode((string)$item->get_title())) ,
+                'title' => $this->cleanContent(html_entity_decode((string)$item->get_title())),
                 'text' => $this->cleanContent((string)$item->get_content()),
                 'link' => $item->get_permalink(),
             ];
-            $items[] = $markerArray;
         }
 
         $this->view->assign('simplePies', $items);
         return $this->htmlResponse();
     }
 
-    private function getCacheFolder(): string
-    {
-        $pathSite = Environment::getPublicPath() . '/';
-        return  $pathSite . 'typo3temp' . DIRECTORY_SEPARATOR . 'tx_simplepierss' . DIRECTORY_SEPARATOR;
-    }
-
     public function cleanContent(string $string = ''): string
     {
-        if (empty($string)) {
+        if ($string === '') {
             return $string;
         }
-        //unicode Symbole wie '&#xfc;' ersetzen
-        // html_entity_decode holft da nicht
         $replace = [
             '&Uuml;' => 'Ü',
             '&#xDC;' => 'Ü',
@@ -91,11 +71,10 @@ class SimplePieController extends ActionController
             '&#xD6;' => 'Ö',
             '&ouml;' => 'ö',
             '&#xF6;' => 'ö',
-            '&szlig' => 'ß',
+            '&szlig;' => 'ß',
             '&#xDF;' => 'ß',
             '&#xdf;' => 'ß',
             '&#x2014;' => '—',
-
         ];
         return strtr($string, $replace);
     }

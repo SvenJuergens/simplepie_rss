@@ -21,6 +21,15 @@
                             <size>5</size>
                         </config>
                     </settings.itemLimit>
+                    <settings.cacheLifetime>
+                        <label>Cache Lifetime (seconds)</label>
+                        <config>
+                            <type>input</type>
+                            <size>5</size>
+                            <default>3600</default>
+                            <eval>int</eval>
+                        </config>
+                    </settings.cacheLifetime>
                     <settings.templateLayout>
                         <label>Template Layout</label>
                         <config>
