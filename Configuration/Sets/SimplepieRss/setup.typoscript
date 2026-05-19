@@ -1,0 +1,7 @@
+plugin.tx_simplepierss {
+  view {
+    templateRootPaths.0 = EXT:simplepie_rss/Resources/Private/Templates/
+    partialRootPaths.0 = EXT:simplepie_rss/Resources/Private/Partials/
+    layoutRootPaths.0 = EXT:simplepie_rss/Resources/Private/Layouts/
+  }
+}
