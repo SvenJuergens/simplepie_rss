@@ -42,7 +42,7 @@ class SimplePieController extends ActionController
         $items = [];
         foreach ($feed->get_items(0, (int)($this->settings['itemLimit'] ?? 0)) as $item) {
             $items[] = [
-                'date' => $item->get_local_date('%d.%m.%Y'),
+                'date' => $item->get_date('d.m.Y'),
                 'title' => $this->decodeEntities((string)$item->get_title()),
                 'text' => $this->decodeEntities((string)$item->get_content()),
                 'link' => $item->get_permalink(),
