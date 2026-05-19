@@ -43,8 +43,8 @@ class SimplePieController extends ActionController
         foreach ($feed->get_items(0, (int)($this->settings['itemLimit'] ?? 0)) as $item) {
             $items[] = [
                 'date' => $item->get_local_date('%d.%m.%Y'),
-                'title' => $this->cleanContent(html_entity_decode((string)$item->get_title())),
-                'text' => $this->cleanContent((string)$item->get_content()),
+                'title' => $this->decodeEntities((string)$item->get_title()),
+                'text' => $this->decodeEntities((string)$item->get_content()),
                 'link' => $item->get_permalink(),
             ];
         }
@@ -53,29 +53,11 @@ class SimplePieController extends ActionController
         return $this->htmlResponse();
     }
 
-    public function cleanContent(string $string = ''): string
+    private function decodeEntities(string $value): string
     {
-        if ($string === '') {
-            return $string;
+        if ($value === '') {
+            return $value;
         }
-        $replace = [
-            '&Uuml;' => 'Ü',
-            '&#xDC;' => 'Ü',
-            '&uuml;' => 'ü',
-            '&#xfc;' => 'ü',
-            '&Auml;' => 'Ä',
-            '&#xC4;' => 'Ä',
-            '&auml;' => 'ä',
-            '&#xE4;' => 'ä',
-            '&Ouml;' => 'Ö',
-            '&#xD6;' => 'Ö',
-            '&ouml;' => 'ö',
-            '&#xF6;' => 'ö',
-            '&szlig;' => 'ß',
-            '&#xDF;' => 'ß',
-            '&#xdf;' => 'ß',
-            '&#x2014;' => '—',
-        ];
-        return strtr($string, $replace);
+        return html_entity_decode($value, ENT_QUOTES | ENT_HTML5, 'UTF-8');
     }
 }
