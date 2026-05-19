@@ -1,40 +1,41 @@
+<?xml version="1.0"?>
 <T3DataStructure>
-	<sheets>
-		<sDEF>
-			<ROOT>
-				<sheetTitle>Function</sheetTitle>
-				<type>array</type>
-				<el>
-					<!-- FeedUrl -->
-					<settings.feedUrl>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <sheetTitle>Function</sheetTitle>
+                <type>array</type>
+                <el>
+                    <!-- FeedUrl -->
+                    <settings.feedUrl>
                         <label>FeedUrl</label>
                         <config>
                             <type>input</type>
                             <size>35</size>
                         </config>
-					</settings.feedUrl>
-					<settings.itemLimit>
+                    </settings.feedUrl>
+                    <settings.itemLimit>
                         <label>Item Limit</label>
                         <config>
                             <type>input</type>
                             <size>5</size>
                         </config>
-					</settings.itemLimit>
-					<settings.templateLayout>
+                    </settings.itemLimit>
+                    <settings.templateLayout>
                         <label>Template Layout</label>
                         <config>
                             <type>select</type>
                             <renderType>selectSingle</renderType>
                             <items>
                                 <numIndex index="0" type="array">
-                                    <numIndex index="0"></numIndex>
-                                    <numIndex index="1"></numIndex>
+                                    <label/>
+                                    <value/>
                                 </numIndex>
                             </items>
                         </config>
-					</settings.templateLayout>
-				</el>
-			</ROOT>
-		</sDEF>
-	</sheets>
+                    </settings.templateLayout>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
 </T3DataStructure>
