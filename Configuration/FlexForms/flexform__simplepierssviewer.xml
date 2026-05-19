@@ -6,28 +6,34 @@
                 <sheetTitle>Function</sheetTitle>
                 <type>array</type>
                 <el>
-                    <!-- FeedUrl -->
                     <settings.feedUrl>
-                        <label>FeedUrl</label>
+                        <label>Feed URL</label>
                         <config>
                             <type>input</type>
                             <size>35</size>
+                            <required>1</required>
                         </config>
                     </settings.feedUrl>
                     <settings.itemLimit>
                         <label>Item Limit</label>
                         <config>
-                            <type>input</type>
+                            <type>number</type>
                             <size>5</size>
+                            <default>10</default>
+                            <range>
+                                <lower>0</lower>
+                            </range>
                         </config>
                     </settings.itemLimit>
                     <settings.cacheLifetime>
                         <label>Cache Lifetime (seconds)</label>
                         <config>
-                            <type>input</type>
+                            <type>number</type>
                             <size>5</size>
                             <default>3600</default>
-                            <eval>int</eval>
+                            <range>
+                                <lower>0</lower>
+                            </range>
                         </config>
                     </settings.cacheLifetime>
                     <settings.templateLayout>
