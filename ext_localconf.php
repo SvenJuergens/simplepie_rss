@@ -12,8 +12,7 @@ defined('TYPO3') or die();
     ],
     [
         \SvenJuergens\SimplepieRss\Controller\SimplePieController::class => '',
-    ],
-    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
+    ]
 );
 
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][\SvenJuergens\SimplepieRss\Service\SimplePieFactory::CACHE_IDENTIFIER] ??= [
