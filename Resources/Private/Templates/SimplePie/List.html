@@ -1,26 +1,26 @@
 <html data-namespace-typo3-fluid="true"
-	  xmlns:f="http://xsd.helmut-hummel.de/ns/TYPO3/CMS/Fluid/ViewHelpers"
-	  xmlns:sj="http://typo3.org/ns/SvenJuergens/SjViewhelpers/ViewHelpers"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
 >
-<sj:asset.includeFile path="typo3conf/ext/simplepie_rss/Resources/Public/Css/tx_simplpierss.css" />
+<f:asset.css identifier="simplepie-rss" href="EXT:simplepie_rss/Resources/Public/Css/simplepie-rss.css" />
 
 <f:layout name="Default" />
 <f:section name="main">
-<f:if condition="{simplePies}">
-	<f:then>
-      	<div class="tx_simplepierss-title">
-			<f:for each="{simplePies}" as="item">
-				<div class="tx_simplepierss-item">
-					<f:if condition="{item.date}">
-						<span>{item.date}</span>
-					</f:if>
-					<div><f:link.external uri="{item.link}" target="_blank"><f:format.raw>{item.title}</f:format.raw></f:link.external></div>
-				</div>
-		</f:for>
-	</div>
-	</f:then>
-	<f:else>
-		<f:translate key="noPiesFound" default="keene Items jefunden"/>
-	</f:else>
-</f:if>
+    <f:if condition="{simplePies}">
+        <f:then>
+            <div class="tx-simplepie-rss-list">
+                <f:for each="{simplePies}" as="item">
+                    <div class="tx-simplepie-rss-item">
+                        <f:if condition="{item.date}">
+                            <span>{item.date}</span>
+                        </f:if>
+                        <f:link.external uri="{item.link}" target="_blank"><f:format.raw>{item.title}</f:format.raw></f:link.external>
+                    </div>
+                </f:for>
+            </div>
+        </f:then>
+        <f:else>
+            <f:translate key="LLL:EXT:simplepie_rss/Resources/Private/Language/locallang.xlf:noPiesFound" default="Keine Items gefunden" />
+        </f:else>
+    </f:if>
 </f:section>
+</html>
