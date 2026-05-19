@@ -1,6 +1,6 @@
 <?php
 
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+declare(strict_types=1);
 
 defined('TYPO3') or die();
 
@@ -9,11 +9,17 @@ defined('TYPO3') or die();
     'Simplepierssviewer',
     [
         \SvenJuergens\SimplepieRss\Controller\SimplePieController::class => 'list',
-
     ],
-    // non-cacheable actions
     [
         \SvenJuergens\SimplepieRss\Controller\SimplePieController::class => '',
-    ],
-    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
+    ]
 );
+
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][\SvenJuergens\SimplepieRss\Service\SimplePieFactory::CACHE_IDENTIFIER] ??= [
+    'frontend' => \TYPO3\CMS\Core\Cache\Frontend\VariableFrontend::class,
+    'backend' => \TYPO3\CMS\Core\Cache\Backend\SimpleFileBackend::class,
+    'options' => [
+        'defaultLifetime' => \SvenJuergens\SimplepieRss\Service\SimplePieFactory::DEFAULT_CACHE_LIFETIME,
+    ],
+    'groups' => ['system'],
+];

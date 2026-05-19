@@ -1,40 +1,56 @@
+<?xml version="1.0"?>
 <T3DataStructure>
-	<sheets>
-		<sDEF>
-			<ROOT>
-				<sheetTitle>Function</sheetTitle>
-				<type>array</type>
-				<el>
-					<!-- FeedUrl -->
-					<settings.feedUrl>
-                        <label>FeedUrl</label>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <sheetTitle>Function</sheetTitle>
+                <type>array</type>
+                <el>
+                    <settings.feedUrl>
+                        <label>Feed URL</label>
                         <config>
                             <type>input</type>
                             <size>35</size>
+                            <required>1</required>
                         </config>
-					</settings.feedUrl>
-					<settings.itemLimit>
+                    </settings.feedUrl>
+                    <settings.itemLimit>
                         <label>Item Limit</label>
                         <config>
-                            <type>input</type>
+                            <type>number</type>
                             <size>5</size>
+                            <default>10</default>
+                            <range>
+                                <lower>0</lower>
+                            </range>
                         </config>
-					</settings.itemLimit>
-					<settings.templateLayout>
+                    </settings.itemLimit>
+                    <settings.cacheLifetime>
+                        <label>Cache Lifetime (seconds)</label>
+                        <config>
+                            <type>number</type>
+                            <size>5</size>
+                            <default>3600</default>
+                            <range>
+                                <lower>0</lower>
+                            </range>
+                        </config>
+                    </settings.cacheLifetime>
+                    <settings.templateLayout>
                         <label>Template Layout</label>
                         <config>
                             <type>select</type>
                             <renderType>selectSingle</renderType>
                             <items>
                                 <numIndex index="0" type="array">
-                                    <numIndex index="0"></numIndex>
-                                    <numIndex index="1"></numIndex>
+                                    <label/>
+                                    <value/>
                                 </numIndex>
                             </items>
                         </config>
-					</settings.templateLayout>
-				</el>
-			</ROOT>
-		</sDEF>
-	</sheets>
+                    </settings.templateLayout>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
 </T3DataStructure>
