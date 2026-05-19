@@ -4,9 +4,8 @@
 	"description": "An example extension",
 	"license": "GPL-2.0-or-later",
 	"require": {
-		"typo3/cms-core": "^12.4.22 || ^13.4",
-		"simplepie/simplepie": "^1.7",
-		"linawolf/list-type-migration": "^1"
+		"typo3/cms-core": "^13.4 || ^14.3",
+		"simplepie/simplepie": "^1.7"
 	},
 	"autoload": {
 		"psr-4": {
@@ -15,38 +14,7 @@
 	},
 	"extra": {
 		"typo3/cms": {
-			"app-dir": ".Build",
-			"web-dir": ".Build/public",
 			"extension-key": "simplepie_rss"
 		}
-	},
-	"config": {
-		"vendor-dir": ".Build/vendor",
-		"vendor_dir": ".Build/vendor",
-		"sort-packages": true,
-		"allow-plugins": {
-			"typo3/cms-composer-installers": true,
-			"typo3/class-alias-loader": true
-		}
-	},
-	"scripts": {
-		"test:php:lint": [
-			"parallel-lint --exclude .Build ."
-		],
-		"test": [
-			"@test:php:lint"
-		],
-		"cgl": [
-			"php-cs-fixer fix --config=.php-cs-fixer.dist.php --diff --dry-run --verbose"
-		],
-		"cglFix": [
-			"php-cs-fixer fix --config=.php-cs-fixer.dist.php"
-		]
-	},
-	"require-dev": {
-		"friendsofphp/php-cs-fixer": "^3",
-		"php-parallel-lint/php-console-highlighter": "^0.5.0",
-		"php-parallel-lint/php-parallel-lint": "^1.2",
-		"typo3/coding-standards": "^0.7"
 	}
 }
